@@ -8,6 +8,7 @@ import client from '../utils/apollo';
 const ITEMS_QUERY = gql`
   {
     items {
+      id
       title
       imageUrl
       user {
@@ -19,8 +20,16 @@ const ITEMS_QUERY = gql`
 
 const ListItems = () => {
   const { loading, data, error } = useQuery(ITEMS_QUERY);
-  console.log('loading,data,error', loading, data, error);
-  return <div>hello</div>;
+  if (loading) return <div>Loading...</div>;
+  return (
+    <div>
+      {data.items.map(item => (
+        <div key={item.id}>
+          <h3>Title: {item.title}</h3>
+        </div>
+      ))}
+    </div>
+  );
 };
 
 const App = () => (
