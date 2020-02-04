@@ -29,3 +29,6 @@
 /yarn-error.log
 yarn-debug.log*
 .yarn-integrity
+
+/vendor/bundle/ruby/2.6.0/bin
+/vendor/bundle/ruby/2.6.0/specifications/*
